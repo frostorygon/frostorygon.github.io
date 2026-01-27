@@ -15,7 +15,7 @@ export function Hero() {
                 >
                     <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-cyan-400 blur-md opacity-75 animate-pulse" />
                     <img
-                        src="/avatar.jpg"
+                        src={`${import.meta.env.BASE_URL}avatar.jpg`}
                         alt="FrostOrygon"
                         className="relative w-full h-full rounded-full object-cover border-2 border-cyan-400/50"
                     />
