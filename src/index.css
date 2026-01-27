@@ -5,14 +5,71 @@
   --color-foreground: #ffffff;
 
   --color-primary: #00d9ff;
-  --color-secondary: #8b5cf6;
+  --color-secondary: #e879f9;
+  --color-accent: #f472b6;
 
   --font-sans: Inter, ui-sans-serif, system-ui;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular;
+
+  --animate-aurora: aurora 60s linear infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+
+  @keyframes shimmer {
+    from {
+      background-position: 0 0;
+    }
+
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
+/* Animated gradient for text */
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient-shift 3s ease infinite;
 }
 
 :root {
   color-scheme: dark;
+
+  /* Aurora effect colors - Cyberpunk palette */
+  --white: #fff;
+  --black: #0a0a0f;
+  --transparent: transparent;
+
+  /* Updated to cyberpunk neon colors */
+  --blue-300: #67e8f9;
+  --blue-400: #22d3ee;
+  --blue-500: #06b6d4;
+  --indigo-300: #c084fc;
+  --violet-200: #e879f9;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

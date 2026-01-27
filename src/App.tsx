@@ -1,8 +1,68 @@
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Lenis from 'lenis'
+import { Hero } from '@/components/sections/Hero'
+import { Projects } from '@/components/sections/Projects'
+import { Contact } from '@/components/sections/Contact'
+import { FloatingDock } from "@/components/aceternity/floating-dock"
+import { motion, AnimatePresence } from "framer-motion"
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandX,
+  IconHome,
+  IconTerminal2,
+  IconUser,
+} from "@tabler/icons-react"
+
+const links = [
+  {
+    title: "Home",
+    icon: (
+      <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "#",
+  },
+  {
+    title: "Projects",
+    icon: (
+      <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "#projects",
+  },
+  {
+    title: "About",
+    icon: (
+      <IconUser className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "#contact",
+  },
+  {
+    title: "My GitHub",
+    icon: (
+      <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "https://github.com/frostorygon",
+  },
+  {
+    title: "LinkedIn",
+    icon: (
+      <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "https://linkedin.com",
+  },
+  {
+    title: "Twitter",
+    icon: (
+      <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "https://twitter.com",
+  },
+]
 
 function App() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
   useEffect(() => {
     const lenis = new Lenis()
 
@@ -13,42 +73,60 @@ function App() {
 
     requestAnimationFrame(raf)
 
+    // Track scroll position
+    const handleScroll = () => {
+      // Trigger after scrolling past ~80% of viewport height (hero section)
+      setIsScrolled(window.scrollY > window.innerHeight * 0.8)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
     return () => {
       lenis.destroy()
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
+
   return (
-    <div className="min-h-screen p-8 font-sans">
-      <main className="max-w-4xl mx-auto space-y-8">
-        <header className="space-y-4">
-          <h1 className="text-6xl font-bold tracking-tighter text-glow">
-            FrostOrygon
-          </h1>
-          <p className="text-xl text-gray-400">
-            Creation is the human experience
-          </p>
-        </header>
+    <main className="bg-background min-h-screen w-full overflow-hidden antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+      <Hero />
+      <Projects />
+      <Contact />
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="h-64 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 glow-cyan">
-            <h2 className="text-2xl font-bold mb-2">Phase 1</h2>
-            <p className="text-gray-400">High-performance skeleton active.</p>
-            <div className="mt-4 font-mono text-sm text-primary">
-              Run: Vite + Tailwind v4 + Lenis
+      {/* Animated Floating Dock */}
+      <AnimatePresence mode="wait">
+        {!isScrolled ? (
+          // Horizontal dock at bottom
+          <motion.div
+            key="horizontal"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-10 w-full flex justify-center z-50 pointer-events-none"
+          >
+            <div className="pointer-events-auto">
+              <FloatingDock items={links} />
             </div>
-          </div>
-          <div className="h-64 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 glow-purple">
-            <h2 className="text-2xl font-bold mb-2">Status</h2>
-            <p className="text-gray-400">Waiting for interaction.</p>
-          </div>
-        </section>
-
-        <div className="h-[200vh] border-l border-white/10 pl-8 ml-4">
-          <p className="py-8 text-gray-500">Scroll test area...</p>
-        </div>
-      </main>
-    </div>
+          </motion.div>
+        ) : (
+          // Vertical dock on right side
+          <motion.div
+            key="vertical"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed right-4 top-1/2 -translate-y-1/2 z-50 pointer-events-none"
+          >
+            <div className="pointer-events-auto">
+              <FloatingDock items={links} vertical />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </main>
   )
 }
 
