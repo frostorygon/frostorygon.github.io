@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0f;
+  --color-foreground: #ffffff;
+
+  --color-primary: #00d9ff;
+  --color-secondary: #8b5cf6;
+
+  --font-sans: Inter, ui-sans-serif, system-ui;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  @apply antialiased;
+}
