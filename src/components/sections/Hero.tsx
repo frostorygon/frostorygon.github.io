@@ -42,7 +42,7 @@ export function Hero() {
                 >
                     <span className="h-px w-8 md:w-16 bg-gradient-to-r from-transparent to-cyan-500" />
                     <p className="text-sm md:text-lg text-neutral-400 font-light tracking-widest uppercase">
-                        Creation is the human experience
+                        Creating is the human experience
                     </p>
                     <span className="h-px w-8 md:w-16 bg-gradient-to-l from-transparent to-fuchsia-500" />
                 </motion.div>
