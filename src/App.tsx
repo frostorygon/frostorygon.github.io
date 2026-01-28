@@ -8,11 +8,8 @@ import { FloatingDock } from "@/components/aceternity/floating-dock"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   IconBrandGithub,
-  IconBrandLinkedin,
-  IconBrandX,
   IconHome,
   IconTerminal2,
-  IconUser,
 } from "@tabler/icons-react"
 
 const links = [
@@ -31,34 +28,14 @@ const links = [
     href: "#projects",
   },
   {
-    title: "About",
-    icon: (
-      <IconUser className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#contact",
-  },
-  {
     title: "GitHub",
     icon: (
       <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
     href: "https://github.com/frostorygon",
   },
-  {
-    title: "LinkedIn",
-    icon: (
-      <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "https://linkedin.com",
-  },
-  {
-    title: "Twitter",
-    icon: (
-      <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "https://twitter.com",
-  },
 ]
+
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false)
