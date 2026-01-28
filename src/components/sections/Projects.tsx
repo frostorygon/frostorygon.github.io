@@ -29,7 +29,6 @@ export function Projects() {
                             title={item.title}
                             description={item.description}
                             icon={item.icon}
-                            gradient={item.gradient}
                             href={item.href}
                         />
                     ))}
@@ -44,35 +43,30 @@ const items = [
         title: "3D Pet Dog",
         description: "Interactive Three.js virtual pet with click-to-move navigation, equippable helmets (Knight & Viking), fetch mechanics, and day/night cycle in a lush garden environment.",
         icon: <IconDog className="h-5 w-5" />,
-        gradient: "from-amber-500 via-orange-500 to-rose-500",
         href: "https://frostorygon.github.io/vibe-3d-pet/",
     },
     {
         title: "Vibe POS",
         description: "Offline-first Progressive Web App Point of Sale system with cart management, receipt generation, and IndexedDB persistence for seamless retail operations.",
         icon: <IconShoppingCart className="h-5 w-5" />,
-        gradient: "from-cyan-500 via-blue-500 to-indigo-500",
         href: "https://frostorygon.github.io/vibe-pos/",
     },
     {
         title: "Voxel Pagoda Garden",
         description: "Immersive voxel-art Japanese pagoda set in a vibrant garden with cherry blossoms, ambient particles, and atmospheric lighting using Three.js.",
         icon: <IconBuilding className="h-5 w-5" />,
-        gradient: "from-pink-500 via-rose-500 to-red-500",
         href: "https://frostorygon.github.io/vibe-glm-pagoda/",
     },
     {
         title: "Luxury Cakes Landing",
         description: "Elegant landing page for a premium cake business featuring hero sections, product showcases, testimonials, and conversion-optimized order flow.",
         icon: <IconCake className="h-5 w-5" />,
-        gradient: "from-violet-500 via-purple-500 to-fuchsia-500",
         href: "https://frostorygon.github.io/example-cakeshop/",
     },
     {
         title: "Bespoke Cakes Platform",
         description: "Full-featured frontend application with multi-page routing, gallery system, booking flow, and mock API integration for a custom cake business.",
         icon: <IconGift className="h-5 w-5" />,
-        gradient: "from-emerald-500 via-teal-500 to-cyan-500",
         href: "https://frostorygon.github.io/bespoke-cakes/",
     },
 ];

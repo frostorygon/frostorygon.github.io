@@ -52,6 +52,50 @@
   animation: gradient-shift 3s ease infinite;
 }
 
+/* Rotating gradient border for project cards */
+@keyframes rotate-gradient {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.rotating-border {
+  position: relative;
+  background: var(--color-background);
+  border-radius: 1rem;
+}
+
+.rotating-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    transparent,
+    #00d9ff,
+    #e879f9,
+    #00d9ff,
+    transparent
+  );
+  animation: rotate-gradient 4s linear infinite;
+  opacity: 0.5;
+}
+
+.rotating-border:hover::before {
+  opacity: 1;
+}
+
 :root {
   color-scheme: dark;
 

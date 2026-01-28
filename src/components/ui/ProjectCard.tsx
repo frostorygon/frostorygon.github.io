@@ -4,7 +4,6 @@ interface ProjectCardProps {
     title: string;
     description: string;
     icon?: React.ReactNode;
-    gradient?: string;
     href?: string;
     className?: string;
 }
@@ -13,7 +12,6 @@ export function ProjectCard({
     title,
     description,
     icon,
-    gradient = "from-violet-500 via-purple-500 to-blue-500",
     href = "#",
     className,
 }: ProjectCardProps) {
@@ -29,19 +27,10 @@ export function ProjectCard({
                 "transition-all duration-300 ease-out",
                 "hover:border-cyan-500/30 hover:-translate-y-1",
                 "hover:shadow-[0_0_40px_rgba(0,217,255,0.1)]",
+                "rotating-border",
                 className
             )}
         >
-            {/* Gradient Header */}
-            <div
-                className={cn(
-                    "aspect-[16/10] w-full",
-                    "bg-gradient-to-br",
-                    gradient,
-                    "transition-transform duration-500 ease-out",
-                    "group-hover:scale-105"
-                )}
-            />
 
             {/* Content */}
             <div className="flex flex-col gap-3 p-5 md:p-6">
