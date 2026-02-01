@@ -5,6 +5,7 @@ import {
     IconBuilding,
     IconCake,
     IconGift,
+    IconWorld,
 } from "@tabler/icons-react";
 
 export function Projects() {
@@ -39,6 +40,12 @@ export function Projects() {
 }
 
 const items = [
+    {
+        title: "Vibe Weather Globe",
+        description: "Interactive 3D Earth with NASA Blue Marble textures, live weather API integration, city markers, and smooth globe rotation for worldwide weather exploration.",
+        icon: <IconWorld className="h-5 w-5" />,
+        href: "https://frostorygon.github.io/vibe-weather-globe/",
+    },
     {
         title: "3D Pet Dog",
         description: "Interactive Three.js virtual pet with click-to-move navigation, equippable helmets (Knight & Viking), fetch mechanics, and day/night cycle in a lush garden environment.",
