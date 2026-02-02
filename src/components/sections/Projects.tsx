@@ -6,6 +6,7 @@ import {
     IconCake,
     IconGift,
     IconWorld,
+    IconRobot,
 } from "@tabler/icons-react";
 
 export function Projects() {
@@ -40,6 +41,12 @@ export function Projects() {
 }
 
 const items = [
+    {
+        title: "Reddit Sentiment Analyzer",
+        description: "AI-powered Apify Actor that scrapes Reddit posts and comments with automatic sentiment analysis, topic extraction, and entity recognition using Google Gemini AI.",
+        icon: <IconRobot className="h-5 w-5" />,
+        href: "https://apify.com/quakerish_joyride/reddit-sentiment-analyzer",
+    },
     {
         title: "Vibe Weather Globe",
         description: "Interactive 3D Earth with NASA Blue Marble textures, live weather API integration, city markers, and smooth globe rotation for worldwide weather exploration.",
