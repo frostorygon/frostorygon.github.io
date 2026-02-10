@@ -8,19 +8,23 @@
   --color-secondary: #e879f9;
   --color-accent: #f472b6;
 
-  --font-sans: Inter, ui-sans-serif, system-ui;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular;
+  --font-sans: "Outfit", ui-sans-serif, system-ui;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular;
 
   --animate-aurora: aurora 60s linear infinite;
   --animate-shimmer: shimmer 2s linear infinite;
 
   @keyframes aurora {
     from {
-      background-position: 50% 50%, 50% 50%;
+      background-position:
+        50% 50%,
+        50% 50%;
     }
 
     to {
-      background-position: 350% 50%, 350% 50%;
+      background-position:
+        350% 50%,
+        350% 50%;
     }
   }
 
@@ -37,7 +41,6 @@
 
 /* Animated gradient for text */
 @keyframes gradient-shift {
-
   0%,
   100% {
     background-position: 0% 50%;
@@ -64,7 +67,7 @@
 }
 
 @property --gradient-angle {
-  syntax: '<angle>';
+  syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
@@ -74,16 +77,18 @@
 }
 
 .rotating-border::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   border-radius: inherit;
   padding: 1px;
-  background: conic-gradient(from var(--gradient-angle),
-      transparent 25%,
-      rgba(0, 217, 255, 0.5) 50%,
-      transparent 75%);
+  background: conic-gradient(
+    from var(--gradient-angle),
+    transparent 25%,
+    rgba(0, 217, 255, 0.5) 50%,
+    transparent 75%
+  );
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -93,12 +98,12 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: rotate-gradient 6s linear infinite;
-  opacity: 0.2;
+  opacity: 0.5;
   transition: opacity 0.3s ease;
 }
 
 .rotating-border:hover::before {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 :root {
@@ -126,4 +131,17 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans);
   @apply antialiased;
+}
+
+/* Subtle noise/grain overlay for atmospheric depth */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }

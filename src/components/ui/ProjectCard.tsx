@@ -21,7 +21,7 @@ export function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-                "group relative flex flex-col overflow-hidden rounded-2xl",
+                "group relative flex flex-col overflow-hidden rounded-2xl h-full",
                 "bg-neutral-900/50 backdrop-blur-sm",
                 "border border-neutral-800/50",
                 "transition-all duration-300 ease-out",
